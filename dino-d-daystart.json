@@ -14,7 +14,7 @@
         "UpdateSourcePlatform": "Windows",
         "UpdateSource": "Executable",
         "UpdateSourceData": "cmd.exe",
-        "UpdateSourceArgs": "/C cd dinodday\\70000\\dod\\addons > NUL 2>&1 && del /Q /F metamod.vdf > NUL 2>&1 & exit /b 0",
+        "UpdateSourceArgs": "/C cd dinodday\\70000\\dinodday\\addons > NUL 2>&1 && del /Q /F metamod.vdf > NUL 2>&1 & exit /b 0",
         "UpdateSourceConditionSetting": "InstallMod",
         "UpdateSourceConditionValue": "false"
     },
