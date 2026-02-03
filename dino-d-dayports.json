@@ -9,8 +9,8 @@
     {
         "Protocol": "UDP",
         "Port": 27005,
-        "Ref": "ClientPort",
-        "Name": "Client Port",
-        "Description": "Port for client traffic"
+        "Ref": "QueryPort",
+        "Name": "Query Port",
+        "Description": "Port for query traffic"
     }
 ]
