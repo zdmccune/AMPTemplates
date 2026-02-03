@@ -5,12 +5,5 @@
         "Ref": "ServerPort",
         "Name": "Game and RCON Port",
         "Description": "Port for game and RCON traffic"
-    },
-    {
-        "Protocol": "UDP",
-        "Port": 27006,
-        "Ref": "ClientPort",
-        "Name": "Client Port",
-        "Description": "Port for query traffic"
     }
 ]
