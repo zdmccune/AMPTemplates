@@ -8,9 +8,9 @@
     },
     {
         "Protocol": "UDP",
-        "Port": 27005,
-        "Ref": "QueryPort",
-        "Name": "Query Port",
+        "Port": 27006,
+        "Ref": "ClientPort",
+        "Name": "Client Port",
         "Description": "Port for query traffic"
     }
 ]
