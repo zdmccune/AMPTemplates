@@ -94,7 +94,7 @@
         "DisplayName": "Coop",
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Sets the game to co-op mode from the [Last Stand DLC](https://store.steampowered.com/app/311660/Dino_DDay_Last_Stand_DLC/)",
+        "Description": "Sets the game to cooperative play for the Last Stand mode from the [Last Stand DLC](https://store.steampowered.com/app/311660/Dino_DDay_Last_Stand_DLC/) \nBe sure to run maps with the 'sur' gamemode in mapcycle. Don't forget about ddd_opera, a 'sur' only map and Last Stand exclusive!",
         "Keywords": "coop,co-op,cooperative,pvp,versus",
         "FieldName": "coop",
         "InputType": "checkbox",
@@ -105,11 +105,30 @@
             "True": "1"
         }
     },
+   {
+        "DisplayName": "Initial Gamemode",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Sets the gamemode to start the server with.\nNot all maps support all gamemodes, check the [wiki](https://dinodday.fandom.com/wiki/Map#Stock_Maps) for which maps support which gamemode. Select 'Default Gamemode' to run the selected initial map's default gamemode.",
+        "Keywords": "gamemode",
+        "FieldName": "gamemode",
+        "InputType": "enum",
+        "ParamFieldName": "gamemode",
+        "DefaultValue": "",
+        "EnumValues": {
+            "dm": "Deathmatch (dm)",
+            "koth": "King of the Hill (koth)",
+            "cp": "Capture Point (cp)",
+            "obj": "Objective (obj)",
+            "sur": "Last Stand (sur)",
+			"": "Default Gamemode"
+        }
+    },
     {
         "DisplayName": "Initial Map",
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Server:dns:1",
-        "Description": "Sets the map to start the server with. If \"Custom\" is selected, Custom Initial Map must also be specified",
+        "Description": "Sets the map to start the server with. If \"Custom\" is selected, Custom Initial Map must also be specified.\nMust own the [Last Stand DLC](https://store.steampowered.com/app/311660/Dino_DDay_Last_Stand_DLC/) to play the map Opera.",
         "Keywords": "map",
         "FieldName": "map",
         "InputType": "enum",
@@ -123,13 +142,13 @@
             "ddd_gela": "Gela",
             "ddd_hilltop": "Hilltop",
             "ddd_market": "Market",
-            "ddd_opera": "Opera",
             "ddd_pacentro": "Pacentro",
 			"ddd_resistance": "Resistance",
 			"ddd_snowypark": "Snowypark",
 			"ddd_subbase": "Subbase",
 			"ddd_troina": "Troina",
 			"ddd_ziegenfarm": "Ziegenfarm",
+            "ddd_opera": "Opera",
             "{{CustomMap}}": "--Custom--"
         }
     },
@@ -143,6 +162,19 @@
         "InputType": "text",
         "ParamFieldName": "CustomMap",
         "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Map Cycle",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Sets the map cycle and gamemodes for the server. Format as [map name] [gamemode] E.g. 'ddd_hilltop dm'",
+        "Keywords": "map,cycle,mapcycle,mapcycle.txt",
+        "FieldName": "mapcycle",
+        "InputType": "Textarea",
+        "ParamFieldName": "mapcycle",
+        "DefaultValue": "ddd_airstrip dm\nddd_hilltop dm\nddd_canyon obj\nddd_troina cp\nddd_gela dm\nddd_market koth\nddd_depot obj\nddd_hilltop koth\nddd_troina dm\nddd_market dm\nddd_canyon dm\nddd_fortress obj\nddd_depot dm\nddd_pacentro cp\nddd_resistance koth\nddd_snowypark dm\nddd_subbase koth\nddd_troina cp\nddd_ziegenfarm dm",
+        "Placeholder": "ddd_airstrip dm\nddd_hilltop dm\nddd_canyon obj\nddd_troina cp\nddd_gela dm\nddd_market koth\nddd_depot obj\nddd_hilltop koth\nddd_troina dm\nddd_market dm\nddd_canyon dm\nddd_fortress obj\nddd_depot dm\nddd_pacentro cp\nddd_resistance koth\nddd_snowypark dm\nddd_subbase koth\nddd_troina cp\nddd_ziegenfarm dm",
         "EnumValues": {}
     },
     {
@@ -181,20 +213,6 @@
         "DefaultValue": "24",
         "Placeholder": "24",
         "Suffix": "players",
-        "EnumValues": {}
-    },
-	{
-        "DisplayName": "Time To Wait For Players",
-        "Category": "Dino D-Day:stadia_controller",
-        "Subcategory": "Server:dns:1",
-        "Description": "Sets the amount of player wait time in Coop.",
-        "Keywords": "wait,time,limit",
-        "FieldName": "mp_waitingforplayers_time",
-        "InputType": "number",
-        "MinValue": "0",
-        "ParamFieldName": "mp_waitingforplayers_time",
-        "DefaultValue": "60",
-        "Placeholder": "60",
         "EnumValues": {}
     },
     {
@@ -663,6 +681,51 @@
         "FieldName": "sv_alltalk",
         "InputType": "checkbox",
         "ParamFieldName": "sv_alltalk",
+        "DefaultValue": "1",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
+        }
+    },
+    {
+        "DisplayName": "Allow All Chat",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, dead players can communicate with players who are alive.",
+        "Keywords": "all,chat,sv_allchat",
+        "FieldName": "sv_allchat",
+        "InputType": "checkbox",
+        "ParamFieldName": "sv_allchat",
+        "DefaultValue": "1",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
+        }
+    },
+	{
+        "DisplayName": "Auto Balance",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, auto balance will occur when the teams are uneven.",
+        "Keywords": "auto,balance,sv_autobalance",
+        "FieldName": "sv_autobalance",
+        "InputType": "checkbox",
+        "ParamFieldName": "sv_autobalance",
+        "DefaultValue": "1",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
+        }
+    },
+	{
+        "DisplayName": "Auto Team Switch Each Round",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, auto-team-switching will occur after each round.",
+        "Keywords": "auto,team,switch,sv_auto_team_switch",
+        "FieldName": "sv_auto_team_switch",
+        "InputType": "checkbox",
+        "ParamFieldName": "sv_auto_team_switch",
         "DefaultValue": "0",
         "EnumValues": {
             "False": "0",
@@ -685,6 +748,35 @@
         }
     },
     {
+        "DisplayName": "KOTH Capture Player Count Requirement",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How many players are needed to capture the Hill",
+        "Keywords": "time,point,hill,capture,koth,capture,captures,ddd_capturers",
+        "FieldName": "ddd_capturers",
+        "InputType": "number",
+        "MinValue": "1",
+        "ParamFieldName": "ddd_capturers",
+        "DefaultValue": "1",
+        "Placeholder": "1",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "KOTH Hill Hold Time",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Time in seconds, after that the capturing team wins the round if the 'hill' isn't recaptured by the other team",
+        "Keywords": "time,limit,rotation,koth_timelimit",
+        "FieldName": "koth_timelimit",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "koth_timelimit",
+        "DefaultValue": "180",
+        "Placeholder": "180",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Map Rotation Time Limit",
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
@@ -694,8 +786,8 @@
         "InputType": "number",
         "MinValue": "0",
         "ParamFieldName": "mp_timelimit",
-        "DefaultValue": "0",
-        "Placeholder": "0",
+        "DefaultValue": "45",
+        "Placeholder": "45",
         "Suffix": "minutes",
         "EnumValues": {}
     },
@@ -718,14 +810,132 @@
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
         "Description": "Sets the number of kills at which the map ends. 0 = disabled",
-        "Keywords": "kill,frag,limit,rotation,mp_fraglimit",
-        "FieldName": "mp_fraglimit",
+        "Keywords": "kill,frag,limit,rotation,mp_fraglimit,ddd_dm_frags",
+        "FieldName": "ddd_dm_frags",
         "InputType": "number",
         "MinValue": "0",
-        "ParamFieldName": "mp_fraglimit",
+        "ParamFieldName": "ddd_dm_frags",
         "DefaultValue": "0",
         "Placeholder": "0",
         "Suffix": "kills",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Respawn Timer",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Time in seconds players have to wait until they respawn after death.",
+        "Keywords": "time,respawn,timer,mp_respawn_timer",
+        "FieldName": "mp_respawn_timer",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "mp_respawn_timer",
+        "DefaultValue": "15",
+        "Placeholder": "15",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Special Dino Spawn Delay",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How long (in seconds) does the game wait until the player that was chosen spawn as the special Dino (T-Rex etc.)?",
+        "Keywords": "special,dino,delay,ddd_bigdinosaur_spawn_wait",
+        "FieldName": "ddd_bigdinosaur_spawn_wait",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "ddd_bigdinosaur_spawn_wait",
+        "DefaultValue": "10",
+        "Placeholder": "10",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Satchel Limit",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How many satchel charges can be avilable at the same time?",
+        "Keywords": "satchel,limit,ddd_satchel_limit",
+        "FieldName": "ddd_satchel_limit",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "ddd_satchel_limit",
+        "DefaultValue": "5",
+        "Placeholder": "5",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Satchel Fuse Time",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How long (in seconds) does it take to fuse a satchel charge?",
+        "Keywords": "charge,time,ddd_satchel_timer",
+        "FieldName": "ddd_satchel_timer",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "ddd_satchel_timer",
+        "DefaultValue": "12",
+        "Placeholder": "12",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Satchel Defuse Time: Human",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How long (in seconds) does it take to fuse a satchel charge for humans?",
+        "Keywords": "defuse,time,ddd_satchel_defuse_time_human",
+        "FieldName": "ddd_satchel_defuse_time_human",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "ddd_satchel_defuse_time_human",
+        "DefaultValue": "4",
+        "Placeholder": "4",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Satchel Defuse Time: Dino",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How long (in seconds) does it take to fuse a satchel charge for dinos?",
+        "Keywords": "defuse,time,ddd_satchel_defuse_time_dino",
+        "FieldName": "ddd_satchel_defuse_time_dino",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "ddd_satchel_defuse_time_dino",
+        "DefaultValue": "6",
+        "Placeholder": "6",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Weapon Respawn Time",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How long (in seconds) does it take for weapons (stachel charges etc.) to respawn?",
+        "Keywords": "weapon,respawn,time,sv_ddd_weapon_respawn_time",
+        "FieldName": "sv_ddd_weapon_respawn_time",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "sv_ddd_weapon_respawn_time",
+        "DefaultValue": "20",
+        "Placeholder": "20",
+        "Suffix": "seconds",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "T-Rex Spawn Count",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "How many T-Rex's do you want to spawn on dm T-Rex maps?",
+        "Keywords": "trex,spawn,count,sv_trex_spawn_count",
+        "FieldName": "sv_trex_spawn_count",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "sv_trex_spawn_count",
+        "DefaultValue": "1",
+        "Placeholder": "1",
         "EnumValues": {}
     },
 	{
@@ -742,6 +952,21 @@
             "1": "Easy",
             "2": "Normal",
             "3": "Hard"
+        }
+    },
+	{
+        "DisplayName": "Balance Bots",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "If enabled, add balance bots when the teams are uneven.",
+        "Keywords": "auto,balance,bots,bot,sv_autobalance_bots",
+        "FieldName": "sv_autobalance_bots",
+        "InputType": "checkbox",
+        "ParamFieldName": "sv_autobalance_bots",
+        "DefaultValue": "0",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
         }
     },
 	{
@@ -773,10 +998,24 @@
         "EnumValues": {}
     },
 	{
-        "DisplayName": "Coop: Player Wait Time",
+        "DisplayName": "Limit Teams",
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
-        "Description": "Sets the amount of player wait time in Coop.",
+        "Description": "How many players can one team have less than the other? Once the limit is reached, the server will block joining the team that already has this amount of more players!\nA value of '0' will disable this check.",
+        "Keywords": "teams,limit",
+        "FieldName": "mp_limitteams",
+        "InputType": "number",
+        "MinValue": "0",
+        "ParamFieldName": "mp_limitteams",
+        "DefaultValue": "2",
+        "Placeholder": "2",
+        "EnumValues": {}
+    },
+	{
+        "DisplayName": "Player Wait Time",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Time to wait for players to join before starting the match.",
         "Keywords": "wait,time,limit",
         "FieldName": "ddd_player_waittime",
         "InputType": "number",
@@ -785,6 +1024,21 @@
         "DefaultValue": "60",
         "Placeholder": "60",
         "EnumValues": {}
+    },
+    {
+        "DisplayName": "Random Class Selection",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Allow class 'Random' to be chosen?",
+        "Keywords": "random,class,mp_allowrandomclass",
+        "FieldName": "mp_allowrandomclass",
+        "InputType": "checkbox",
+        "ParamFieldName": "mp_allowrandomclass",
+        "DefaultValue": "1",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
+        }
     },
     {
         "DisplayName": "Restrict Spectator Mode",
@@ -802,6 +1056,19 @@
         }
     },
     {
+        "DisplayName": "Class Restrictions",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Here you can limit the maximum amount of players per class, 'blue' is Allies, 'red' is 'Axis'\n'-1' means no class limit, '0' means class disabled, any other value is the actual player limit per class! \nNOTE: red_class8 & red_class9 are UNUSED currently!",
+        "Keywords": "class,restrictions,restriction",
+        "FieldName": "classrestrictions",
+        "InputType": "Textarea",
+        "ParamFieldName": "classrestrictions",
+        "DefaultValue": "mp_limit_blue_class1 \"-1\"\nmp_limit_blue_class2 \"-1\"\nmp_limit_blue_class3 \"-1\"\nmp_limit_blue_class4 \"-1\"\nmp_limit_blue_class5 \"-1\"\nmp_limit_blue_class6 \"-1\"\nmp_limit_blue_class7 \"-1\"\nmp_limit_red_class1 \"-1\"\nmp_limit_red_class2 \"-1\"\nmp_limit_red_class3 \"-1\"\nmp_limit_red_class4 \"-1\"\nmp_limit_red_class5 \"-1\"\nmp_limit_red_class6 \"-1\"\nmp_limit_red_class7 \"-1\"\nmp_limit_red_class8 \"-1\"\nmp_limit_red_class9 \"-1\"\nmp_limit_red_class10 \"-1\"\nmp_limit_red_class11 \"-1\"",
+        "Placeholder": "mp_limit_blue_class1 \"-1\"\nmp_limit_blue_class2 \"-1\"\nmp_limit_blue_class3 \"-1\"\nmp_limit_blue_class4 \"-1\"\nmp_limit_blue_class5 \"-1\"\nmp_limit_blue_class6 \"-1\"\nmp_limit_blue_class7 \"-1\"\nmp_limit_red_class1 \"-1\"\nmp_limit_red_class2 \"-1\"\nmp_limit_red_class3 \"-1\"\nmp_limit_red_class4 \"-1\"\nmp_limit_red_class5 \"-1\"\nmp_limit_red_class6 \"-1\"\nmp_limit_red_class7 \"-1\"\nmp_limit_red_class8 \"-1\"\nmp_limit_red_class9 \"-1\"\nmp_limit_red_class10 \"-1\"\nmp_limit_red_class11 \"-1\"",
+        "EnumValues": {}
+    },
+    {
         "DisplayName": "Alternate Ticks",
         "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "Gameplay:joystick:2",
@@ -810,6 +1077,21 @@
         "FieldName": "sv_alternateticks",
         "InputType": "checkbox",
         "ParamFieldName": "sv_alternateticks",
+        "DefaultValue": "0",
+        "EnumValues": {
+            "False": "0",
+            "True": "1"
+        }
+    },
+    {
+        "DisplayName": "Allow Player 'wait' Command Use",
+        "Category": "Dino D-Day:stadia_controller",
+        "Subcategory": "Gameplay:joystick:2",
+        "Description": "Allow/disallow players using the 'wait' command, generally it's safer to disallow it to prevent people from scripting multiple actions and binding them to a key which can be used to exploit some game features!",
+        "Keywords": "wait,command,sv_allow_wait_command",
+        "FieldName": "sv_allow_wait_command",
+        "InputType": "checkbox",
+        "ParamFieldName": "sv_allow_wait_command",
         "DefaultValue": "0",
         "EnumValues": {
             "False": "0",
