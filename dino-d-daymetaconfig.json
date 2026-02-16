@@ -1,21 +1,8 @@
 [
     {
         "ConfigFile": "dinodday/cfg/server.cfg",
+        "AutoMap": true,
         "ConfigType": "template",
-        "AutoMap": false,
-		"ConfigFileTemplate": "dinodday/AMP_server.cfg"
-    },
-    {
-        "ConfigFile": "dinodday/mapcycle.txt",
-        "ConfigType": "kvp",
-        "ConfigFormat": "{0}{1}",
-        "Subsections": [
-            {
-                "Heading": "$root",
-                "SettingMappings": {
-                    "": "mapcycle"
-                }
-            }
-        ]
+        "ConfigFileTemplate": "dinodday/AMP_server.cfg"
     }
 ]
