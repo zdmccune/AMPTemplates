@@ -13,7 +13,7 @@
         "UpdateSource": "FetchURL",
         "UpdateSourceData": "https://raw.githubusercontent.com/zdmccune/AMPTemplates/main/dino-d-dayserver.cfg",
         "UpdateSourceArgs": "AMP_server.cfg",
-        "UpdateSourceTarget": "{{$FullRootDir}}",
+        "UpdateSourceTarget": "{{$FullRootDir}}70000/dinodday/",
         "OverwriteExistingFiles": true,
         "SkipOnFailure": false
     },
