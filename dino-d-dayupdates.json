@@ -7,14 +7,6 @@
         "UpdateSourceArgs": "70000",
         "SkipOnFailure": false
     },
-	{
-        "UpdateStageName": "SteamCMD Server Download",
-        "UpdateSourcePlatform": "All",
-        "UpdateSource": "SteamCMD",
-        "UpdateSourceData": "70010",
-        "UpdateSourceArgs": "70010",
-        "SkipOnFailure": false
-    },
     {
         "UpdateStageName": "Server.cfg Template File Download",
         "UpdateSourcePlatform": "All",
