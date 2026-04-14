@@ -1258,7 +1258,7 @@
     },
 	{
         "DisplayName": "Disable SourceTV",
-        "Category": "Day of Defeat Source:stadia_controller",
+        "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "SourceTV:tv:6",
         "Description": "If set, SourceTV will be disabled on the server",
         "Keywords": "sourcetv,source,nohltv",
@@ -1273,7 +1273,7 @@
     },
     {
         "DisplayName": "Enable Automatic Demo Recording",
-        "Category": "Day of Defeat Source:stadia_controller",
+        "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "SourceTV:tv:6",
         "Description": "If set, all games will be recorded as SourceTV demos",
         "Keywords": "sourcetv,tv,tv_autorecord",
@@ -1288,7 +1288,7 @@
     },
     {
         "DisplayName": "SourceTV Viewer Limit",
-        "Category": "Day of Defeat Source:stadia_controller",
+        "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "SourceTV:tv:6",
         "Description": "Sets the maximum number of clients allowed to connect to the server's SourceTV. 0 = no SourceTV viewers are allowed, the game will only be recorded locally",
         "Keywords": "max,spectators,clients,viewers,sourcetv,tv,tv_maxclients",
@@ -1304,7 +1304,7 @@
     },
     {
         "DisplayName": "Maximum SourceTV Bandwidth",
-        "Category": "Day of Defeat Source:stadia_controller",
+        "Category": "Dino D-Day:stadia_controller",
         "Subcategory": "SourceTV:tv:6",
         "Description": "Sets the maximum SourceTV spectator bandwidth rate allowed. 0 = unlimited",
         "Keywords": "maximum,bandwidth,rate,sourcetv,tv,tv_maxrate",
